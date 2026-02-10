@@ -1,0 +1,102 @@
+{
+  "fields": [
+    {
+      "name": "id",
+      "type": "string"
+    },
+    {
+      "name": "firstName",
+      "type": "string"
+    },
+    {
+      "default": "",
+      "name": "middleName",
+      "type": "string"
+    },
+    {
+      "default": "",
+      "name": "lastName",
+      "type": "string"
+    },
+    {
+      "confluent:tags": ["PII"],
+      "default": "",
+      "name": "emailId",
+      "type": "string"
+    },
+    {
+      "default": {},
+      "name": "address",
+      "type": {
+        "fields": [
+          {
+            "default": "",
+            "name": "street",
+            "type": "string"
+          },
+          {
+            "default": "",
+            "name": "city",
+            "type": "string"
+          },
+          {
+            "default": "",
+            "name": "state",
+            "type": "string"
+          },
+          {
+            "default": {},
+            "name": "geoLocation",
+            "type": {
+              "fields": [
+                {
+                  "confluent:tags": ["PII"],
+                  "default": "",
+                  "name": "latitude",
+                  "type": "string"
+                },
+                {
+                  "confluent:tags": ["PII"],
+                  "default": "",
+                  "name": "longitude",
+                  "type": "string"
+                }
+              ],
+              "name": "GeoLocation",
+              "type": "record"
+            }
+          },
+          {
+            "confluent:tags": ["PII"],
+            "default": "",
+            "name": "postalCode",
+            "type": "string"
+          }
+        ],
+        "name": "Address",
+        "type": "record"
+      }
+    },
+
+    {
+      "default": {},
+      "name": "paymentDetails",
+      "type": ["CreditCardInfo", "BankingInfo"]
+    }
+  ],
+  "name": "Employee",
+  "namespace": "com.confluent.dto",
+  "references": [
+    {
+      "name": "CreditCardInfo",
+      "subject": "com.confluent.dto.CreditCardInfo",
+      "version": "latest"
+    },
+    {
+      "name": "BankingInfo",
+      "subject": "com.confluent.dto.BankingInfo",
+      "version": "latest"
+    }
+  ],
+  "type": "record"
+}

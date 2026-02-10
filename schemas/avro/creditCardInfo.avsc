@@ -1,0 +1,18 @@
+{
+  "type": "record",
+  "name": "CreditCardInfo",
+  "namespace": "com.confluent.dto",
+  "fields": [
+    {
+      "name": "cardNumber",
+      "type": "string",
+      "default": ""
+    },
+    {
+      "name": "cardPin",
+      "type": "string",
+      "default": "",
+      "confluent:tags": ["PII"]
+    }
+  ]
+}
